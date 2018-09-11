@@ -1,25 +1,17 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+}
+
 group 'moqui-beanstalk'
 version '1.0-SNAPSHOT'
-
-apply plugin: 'java'
-apply plugin: 'idea'
 
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
-
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "io.spring.gradle:dependency-management-plugin:1.0.3.RELEASE"
-    }
-}
-
-apply plugin: "io.spring.dependency-management"
 
 dependencyManagement {
     imports {
@@ -28,13 +20,11 @@ dependencyManagement {
 }
 
 dependencies {
-    compile fileTree(dir: 'src/dist/lib', includes: ['*.jar'])
-    //compile fileTree(dir: 'src/dist/lib/third-party/lib', includes: ['*.jar'])
-    compile 'com.amazonaws:aws-java-sdk-s3'
+    compile 'com.amazonaws:aws-java-sdk-s3:1.11.403'
+    compile 'com.amazonaws:aws-java-sdk-elasticbeanstalk:1.11.403'
 
+    //compile fileTree(dir: 'src/dist/lib', includes: ['*.jar'])
+    //compile fileTree(dir: 'src/dist/lib/third-party/lib', includes: ['*.jar'])
     //testCompile group: 'junit', name: 'junit', version: '4.11'
 }
-
-
-
 
